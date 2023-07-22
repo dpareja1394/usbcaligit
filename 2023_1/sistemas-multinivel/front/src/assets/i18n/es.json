@@ -1,0 +1,10 @@
+{
+    "categorias": {
+        "titulo":"Categorias",
+        "id":"Id",
+        "nombre": "Nombre",
+        "descripcion":"Descripcion",
+        "ingreseNombre":"Ingrese el nombre",
+        "ingreseDescripcion":"Ingrese la descripción"
+    }
+}
