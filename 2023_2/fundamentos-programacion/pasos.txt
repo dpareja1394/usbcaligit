@@ -1,0 +1,1 @@
+xcrun clang++ -o nombre_ejecutable archivo.cpp
