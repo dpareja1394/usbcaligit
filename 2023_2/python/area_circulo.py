@@ -1,5 +1,6 @@
-r = 2
+r = 3
 pi = 3.14159
-area = pi * pow(r, 2)
+
+area = round(pi,4) * (r ** 2)
 
 print(area)
