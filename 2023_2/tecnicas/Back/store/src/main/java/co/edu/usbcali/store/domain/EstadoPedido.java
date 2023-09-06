@@ -13,13 +13,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "estadospedido")
 public class EstadoPedido {
-
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id ;
 
-    @Column(nullable = false, length = 10)
+    @Column(length = 10)
     private String descripcion;
 
 }

@@ -7,9 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "clientes")
 public class Cliente {
@@ -34,5 +34,4 @@ public class Cliente {
     @ManyToOne
     @JoinColumn(name = "tido_id", referencedColumnName = "id", nullable = false)
     private TipoDocumento tipoDocumento;
-
 }

@@ -19,12 +19,20 @@ public class DetallePedido {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id ;
 
-    @Column(length = 19, precision = 2, nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "pedi_id",referencedColumnName = "id", nullable = false)
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "prod_id",referencedColumnName = "id", nullable = false)
+    private Producto producto;
+
+    @Column(length = 19,precision = 2, nullable = false)
     private BigDecimal cantidad;
 
-    @Column(length = 19, precision = 2, nullable = false)
+    @Column(length = 19,precision = 2, nullable = false)
     private BigDecimal valor;
 
 }

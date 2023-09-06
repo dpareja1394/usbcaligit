@@ -20,6 +20,10 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "cate_id", referencedColumnName = "id", nullable = false)
+    private Categoria categoria;
+
     @Column(length = 10, nullable = false)
     private String referencia;
 

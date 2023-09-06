@@ -16,14 +16,22 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Pedido {
-
-    @Id
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(nullable = false)
-    private Instant fecha;
-
-    @Column(nullable = false)
-    private BigDecimal total;
+	
+	@ManyToOne
+	@JoinColumn(name = "clie_id", referencedColumnName = "id", nullable = false)
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "espe_id", referencedColumnName = "id", nullable = false)
+    private EstadoPedido estadoPedido;
+	
+	@Column(nullable=false)
+	private Instant fecha;
+	
+	@Column(nullable=false)
+	private BigDecimal total;
 }
