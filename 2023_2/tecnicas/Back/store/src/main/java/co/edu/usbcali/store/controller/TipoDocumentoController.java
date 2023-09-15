@@ -2,6 +2,8 @@ package co.edu.usbcali.store.controller;
 
 
 import co.edu.usbcali.store.domain.TipoDocumento;
+import co.edu.usbcali.store.dto.TipoDocumentoDTO;
+import co.edu.usbcali.store.mapper.TipoDocumentoMapper;
 import co.edu.usbcali.store.repository.TipoDocumentoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +36,9 @@ public class TipoDocumentoController {
     }
 
     @GetMapping("/porId/{id}")
-    public String buscarPorId(@PathVariable Integer id) throws Exception {
-        return tipoDocumentoRepository.getReferenceById(id).toString();
+    public ResponseEntity<TipoDocumentoDTO> buscarPorId(@PathVariable Integer id) throws Exception {
+        TipoDocumentoDTO tipoDocumentoDTO = TipoDocumentoMapper.domainToDto(tipoDocumentoRepository.getReferenceById(id));
+        return new ResponseEntity<>
+                (tipoDocumentoDTO, HttpStatus.OK);
     }
 }
