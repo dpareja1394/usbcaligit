@@ -1,0 +1,2 @@
+1. Descargar la imagen de MySQL y ponerla a correr
+docker run -d -p 33060:3306 --name mysql-db -e MYSQL_ROOT_PASSWORD=secret mysql
