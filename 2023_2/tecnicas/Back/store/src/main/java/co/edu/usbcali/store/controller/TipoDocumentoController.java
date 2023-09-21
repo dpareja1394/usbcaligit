@@ -35,10 +35,19 @@ public class TipoDocumentoController {
         return tiposDocumentos;
     }
 
-    @GetMapping("/porId/{id}")
+    /*@GetMapping("/porId/{id}")
     public ResponseEntity<TipoDocumentoDTO> buscarPorId(@PathVariable Integer id) throws Exception {
         TipoDocumentoDTO tipoDocumentoDTO = TipoDocumentoMapper.domainToDto(tipoDocumentoRepository.getReferenceById(id));
         return new ResponseEntity<>
                 (tipoDocumentoDTO, HttpStatus.OK);
+    }*/
+
+    @GetMapping("/porId/{id}")
+    public ResponseEntity<TipoDocumentoDTO> buscarPorId(@PathVariable Integer id) throws Exception {
+        TipoDocumento tipoDocumento = tipoDocumentoRepository.getReferenceById(id);
+
+        TipoDocumentoDTO tipoDocumentoDTO = TipoDocumentoMapper.domainToDto(tipoDocumento);
+
+        return new ResponseEntity<>(tipoDocumentoDTO, HttpStatus.OK);
     }
 }
