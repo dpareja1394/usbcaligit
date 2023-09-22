@@ -23,11 +23,11 @@ public class CategoriaServiceImpl implements CategoriaService {
             throw new Exception("La categoría es nula");
         }
 
-        if(categoriaDTO.getNombre() == null || categoriaDTO.getNombre().trim().equals("")) {
+        if(categoriaDTO.getNombre() == null || categoriaDTO.getNombre().isBlank()) {
             throw new Exception("Nombre vacío");
         }
 
-        if(categoriaDTO.getDescripcion() == null || categoriaDTO.getDescripcion().trim().equals("")) {
+        if(categoriaDTO.getDescripcion() == null || categoriaDTO.getDescripcion().isBlank()) {
             throw new Exception("Descripción vacía");
         }
 
