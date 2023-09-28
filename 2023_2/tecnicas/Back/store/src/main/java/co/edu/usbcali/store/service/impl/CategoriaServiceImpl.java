@@ -7,6 +7,8 @@ import co.edu.usbcali.store.repository.CategoriaRepository;
 import co.edu.usbcali.store.service.CategoriaService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 
@@ -29,6 +31,14 @@ public class CategoriaServiceImpl implements CategoriaService {
 
         if(categoriaDTO.getDescripcion() == null || categoriaDTO.getDescripcion().isBlank()) {
             throw new Exception("Descripción vacía");
+        }
+
+        // Validar que no exista una categoría con ese nombre
+        Optional<Categoria> categoriaPorNombre = categoriaRepository.findCategoriaByNombre(categoriaDTO.getNombre());
+
+        if( categoriaPorNombre.isPresent() ) {
+            throw new Exception(String.format("La categoría con el nombre %s ya se encuentra registrada",
+                    categoriaDTO.getNombre()));
         }
 
         // 2. Registrar la categoría en DB Mapeando desde DTO hacia DOMAIN

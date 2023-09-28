@@ -17,6 +17,8 @@ public class ProductoMapper {
                 .unidadesDisponibles(producto.getUnidadesDisponibles())
                 .categoriaId((producto.getCategoria() == null) ?
                         null : producto.getCategoria().getId())
+                .categoriaNombre((producto.getCategoria() == null) ?
+                        null : producto.getCategoria().getNombre())
                 .build();
     }
 

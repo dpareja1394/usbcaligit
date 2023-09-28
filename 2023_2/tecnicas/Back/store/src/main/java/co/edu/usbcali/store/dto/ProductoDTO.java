@@ -19,4 +19,5 @@ public class ProductoDTO {
     private String descripcion;
     private BigDecimal precioUnitario;
     private BigDecimal unidadesDisponibles;
+    private String categoriaNombre;
 }
