@@ -1,9 +1,9 @@
 package co.edu.usbcali.aerolinea.repository;
 
-import co.edu.usbcali.aerolinea.domain.Pais;
+import co.edu.usbcali.aerolinea.domain.Ciudad;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CiudadRepository extends JpaRepository<Pais, Integer> {
+public interface CiudadRepository extends JpaRepository<Ciudad, Integer> {
 }
