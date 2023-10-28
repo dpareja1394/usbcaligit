@@ -2,18 +2,21 @@
 using namespace std;
 
 int factorial(int numero) {
-    if (numero == 0) {
-        numero=1;
+	cout << "Ha ingresado a la función factorial con el parámetro: " << numero << endl;
+    int valorFactorial;
+	if (numero == 0) {
+        valorFactorial=1;
     } else {
-        numero = numero*factorial(numero-1);
+        valorFactorial = numero*factorial(numero-1);
     }
-    return numero;   
+    cout << "El valor que va a retornar la función factorial es: " << valorFactorial << endl;
+    return valorFactorial;   
 }
 
 
 int main() {
-    int resultado = factorial(5);
-    cout << "El factorial del nÃºmero ingresado es: " << resultado << endl;
+    int resultado = factorial(6);
+    cout << "El factorial del número ingresado es: " << resultado << endl;
     return 0;
 }
 
