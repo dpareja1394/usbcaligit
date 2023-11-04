@@ -4,13 +4,10 @@ import co.edu.usbcali.aerolinea.domain.Pais;
 import co.edu.usbcali.aerolinea.dto.PaisDTO;
 import co.edu.usbcali.aerolinea.mapper.PaisMapper;
 import co.edu.usbcali.aerolinea.repository.PaisRepository;
+import co.edu.usbcali.aerolinea.service.PaisService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,11 +16,16 @@ import java.util.List;
 public class PaisController {
 
     // Declarar el Repository para hacer uso
-    public final PaisRepository paisRepository;
+    private final PaisRepository paisRepository;
+
+    // Declarar el Service para usarlo
+    private final PaisService paisService;
 
     // Inyección de dependencias por Constructor
-    public PaisController(PaisRepository paisRepository) {
+    public PaisController(PaisRepository paisRepository,
+                          PaisService paisService) {
         this.paisRepository = paisRepository;
+        this.paisService = paisService;
     }
 
     @GetMapping(value = "/validarController")
@@ -58,6 +60,17 @@ public class PaisController {
         Pais pais = paisRepository.findPaisByCodigo(codigo);
         PaisDTO paisDTO = PaisMapper.domainToDto(pais);
         return new ResponseEntity<>(paisDTO, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/crearNuevoPais")
+    public ResponseEntity<PaisDTO> crearNuevoPais(@RequestBody PaisDTO paisDTO) {
+        PaisDTO paisDTOresponse = null;
+        try {
+            paisDTOresponse = paisService.crearNuevoPais(paisDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return new ResponseEntity<>(paisDTOresponse, HttpStatus.OK);
     }
 
 
