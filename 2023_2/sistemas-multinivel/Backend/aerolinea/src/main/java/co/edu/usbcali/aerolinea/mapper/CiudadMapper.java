@@ -3,6 +3,8 @@ package co.edu.usbcali.aerolinea.mapper;
 import co.edu.usbcali.aerolinea.domain.Ciudad;
 import co.edu.usbcali.aerolinea.dto.CiudadDTO;
 
+import java.util.List;
+
 public class CiudadMapper {
 
     public static CiudadDTO domainToDto(Ciudad ciudad) {
@@ -27,6 +29,14 @@ public class CiudadMapper {
                 .latitud(ciudadDTO.getLatitud())
                 .longitud(ciudadDTO.getLongitud())
                 .build();
+    }
+
+    public static List<CiudadDTO> domainToDtoList(List<Ciudad> ciudades) {
+        return ciudades.stream().map(CiudadMapper::domainToDto).toList();
+    }
+
+    public static List<Ciudad> dtoToDomainList(List<CiudadDTO> ciudadesDto) {
+        return ciudadesDto.stream().map(CiudadMapper::dtoToDomain).toList();
     }
 
 }

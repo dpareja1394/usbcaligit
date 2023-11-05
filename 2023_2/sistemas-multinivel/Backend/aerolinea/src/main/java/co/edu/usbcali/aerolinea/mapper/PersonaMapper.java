@@ -3,6 +3,8 @@ package co.edu.usbcali.aerolinea.mapper;
 import co.edu.usbcali.aerolinea.domain.Persona;
 import co.edu.usbcali.aerolinea.dto.PersonaDTO;
 
+import java.util.List;
+
 public class PersonaMapper {
 
     public static Persona dtoToDomain(PersonaDTO personaDTO) {
@@ -39,6 +41,14 @@ public class PersonaMapper {
                 .telefono(persona.getTelefono())
                 .correo(persona.getCorreo())
                 .build();
+    }
+
+    public static List<Persona> dtoToDomainList(List<PersonaDTO> personasDto) {
+        return personasDto.stream().map(PersonaMapper::dtoToDomain).toList();
+    }
+
+    public static List<PersonaDTO> domainToDtoList(List<Persona> personas) {
+        return personas.stream().map(PersonaMapper::domainToDto).toList();
     }
 
 
