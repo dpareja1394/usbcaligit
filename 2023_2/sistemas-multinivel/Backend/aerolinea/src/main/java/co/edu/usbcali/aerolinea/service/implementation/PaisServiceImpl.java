@@ -48,4 +48,9 @@ public class PaisServiceImpl implements PaisService {
         // Retornamos el PaisDTO
         return paisDTO;
     }
+
+    @Override
+    public PaisDTO modificarPaisExistente(PaisDTO paisDTO) throws Exception {
+        return null;
+    }
 }
