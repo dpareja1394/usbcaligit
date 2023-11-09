@@ -4,7 +4,7 @@ package co.edu.usbcali.store.controller;
 import co.edu.usbcali.store.domain.TipoDocumento;
 import co.edu.usbcali.store.dto.TipoDocumentoDTO;
 import co.edu.usbcali.store.mapper.TipoDocumentoMapper;
-import co.edu.usbcali.store.repository.TipoDocumentoRepository;
+import co.edu.usbcali.store.service.TipoDocumentoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +18,10 @@ import java.util.List;
 @RequestMapping("/tipoDocumento")
 public class TipoDocumentoController {
 
-    private final TipoDocumentoRepository tipoDocumentoRepository;
+    private final TipoDocumentoService tipoDocumentoService;
 
-    public TipoDocumentoController(TipoDocumentoRepository tipoDocumentoRepository) {
-        this.tipoDocumentoRepository = tipoDocumentoRepository;
+    public TipoDocumentoController(TipoDocumentoService tipoDocumentoService) {
+        this.tipoDocumentoService = tipoDocumentoService;
     }
 
     @GetMapping("/validar")
@@ -30,8 +30,8 @@ public class TipoDocumentoController {
     }
 
     @GetMapping("/obtenerTodos")
-    public List<TipoDocumento> obtenerTodos() {
-        List<TipoDocumento> tiposDocumentos = tipoDocumentoRepository.findAll();
+    public List<TipoDocumentoDTO> obtenerTodos() {
+        List<TipoDocumentoDTO> tiposDocumentos = tipoDocumentoService.buscarTodos();
         return tiposDocumentos;
     }
 
@@ -44,10 +44,6 @@ public class TipoDocumentoController {
 
     @GetMapping("/porId/{id}")
     public ResponseEntity<TipoDocumentoDTO> buscarPorId(@PathVariable Integer id) throws Exception {
-        TipoDocumento tipoDocumento = tipoDocumentoRepository.getReferenceById(id);
-
-        TipoDocumentoDTO tipoDocumentoDTO = TipoDocumentoMapper.domainToDto(tipoDocumento);
-
-        return new ResponseEntity<>(tipoDocumentoDTO, HttpStatus.OK);
+        return new ResponseEntity<>(tipoDocumentoService.buscarPorId(id), HttpStatus.OK);
     }
 }
