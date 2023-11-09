@@ -7,6 +7,7 @@ import co.edu.usbcali.store.repository.CategoriaRepository;
 import co.edu.usbcali.store.service.CategoriaService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -50,5 +51,10 @@ public class CategoriaServiceImpl implements CategoriaService {
         categoriaDTO = CategoriaMapper.domainToDto(categoria);
 
         return categoriaDTO;
+    }
+
+    @Override
+    public List<CategoriaDTO> obtenerTodas() throws Exception {
+        return CategoriaMapper.domainToDtoList(categoriaRepository.findAll());
     }
 }

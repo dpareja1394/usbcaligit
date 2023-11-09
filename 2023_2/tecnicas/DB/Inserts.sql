@@ -8,3 +8,6 @@ INSERT INTO estadosPedido (descripcion) VALUES ('Cancelado');
 
 INSERT INTO Clientes (tido_id, nombres, apellidos, documento, estado)
 VALUES(1, 'Daniel', 'Pareja Londoño', '101234', 'A');
+
+INSERT INTO categorias (nombre, descripcion) VALUES ('JUGUETES', 'Todo tipo de juguetería infantil');
+INSERT INTO categorias (nombre, descripcion) VALUES ('HOGAR', 'Accesorios para el hogar');

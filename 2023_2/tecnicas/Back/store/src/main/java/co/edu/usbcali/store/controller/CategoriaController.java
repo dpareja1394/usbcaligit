@@ -15,16 +15,18 @@ import java.util.List;
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
-    private final CategoriaRepository categoriaRepository;
 
-    public CategoriaController(CategoriaService categoriaService, CategoriaRepository categoriaRepository) {
+    public CategoriaController(CategoriaService categoriaService) {
         this.categoriaService = categoriaService;
-        this.categoriaRepository = categoriaRepository;
     }
 
     @GetMapping("/obtenerTodas")
-    public List<Categoria> obtenerTodos(){
-        return categoriaRepository.findAll();
+    public List<CategoriaDTO> obtenerTodas(){
+        try {
+            return categoriaService.obtenerTodas();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @PostMapping("/guardar")
