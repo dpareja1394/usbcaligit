@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductoService {
     ProductoDTO guardarNuevoProducto(ProductoDTO productoDTO) throws Exception;
     List<ProductoDTO> buscarTodos();
+
+    List<ProductoDTO> buscarProductosPorCategoria(Integer categoriaId) throws Exception;
 }

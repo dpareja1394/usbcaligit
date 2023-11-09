@@ -1,7 +1,9 @@
 package co.edu.usbcali.store.mapper;
 
 import co.edu.usbcali.store.domain.Cliente;
+import co.edu.usbcali.store.dto.ClienteCompletoDTO;
 import co.edu.usbcali.store.dto.ClienteDTO;
+import co.edu.usbcali.store.dto.PedidoDTO;
 
 import java.util.List;
 
@@ -26,6 +28,19 @@ public class ClienteMapper {
                 .apellidos(clienteDTO.getApellidos())
                 .documento(clienteDTO.getDocumento())
                 .estado(clienteDTO.getEstado())
+                .build();
+    }
+
+    public static ClienteCompletoDTO domainToClienteCompleto(Cliente cliente, List<PedidoDTO> pedidos) {
+        return ClienteCompletoDTO.builder()
+                .id(cliente.getId())
+                .nombres(cliente.getNombres())
+                .apellidos(cliente.getApellidos())
+                .documento(cliente.getDocumento())
+                .estado(cliente.getEstado())
+                .tipoDocumentoId((cliente.getTipoDocumento() == null) ? null :
+                        cliente.getTipoDocumento().getId())
+                .pedidos(pedidos)
                 .build();
     }
 

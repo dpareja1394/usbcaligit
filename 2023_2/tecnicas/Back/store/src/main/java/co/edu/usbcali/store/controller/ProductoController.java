@@ -29,4 +29,14 @@ public class ProductoController {
         return new ResponseEntity<>(productoDTO1, HttpStatus.OK);
     }
 
+    @GetMapping("/buscarProductosPorCategoria/{categoriaId}")
+    public ResponseEntity<List<ProductoDTO>> buscarProductosPorCategoria(Integer categoriaId) {
+        try {
+            return new ResponseEntity<>(productoService.buscarProductosPorCategoria(categoriaId)
+                    , HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -79,4 +79,12 @@ public class ProductoServiceImpl implements ProductoService {
     public List<ProductoDTO> buscarTodos() {
         return ProductoMapper.domainToDtoList(productoRepository.findAll());
     }
+
+    @Override
+    public List<ProductoDTO> buscarProductosPorCategoria(Integer categoriaId) throws Exception {
+        if(categoriaId == null || categoriaId.equals(0)) {
+            throw new Exception("Categoría no válida");
+        }
+        return ProductoMapper.domainToDtoList(productoRepository.findProductoByCategoriaId(categoriaId));
+    }
 }
