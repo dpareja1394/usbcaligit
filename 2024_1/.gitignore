@@ -1,0 +1,16 @@
+# NetBeans specific
+PicoYPlaca/nbproject/
+PicoYPlaca/build/
+PicoYPlaca/nbbuild/
+PicoYPlaca/dist/
+PicoYPlaca/nbdist/
+PicoYPlaca/nbactions.xml
+PicoYPlaca/nb-configuration.xml
+
+# Class Files
+*.class
+
+# Package Files
+*.jar
+*.war
+*.ear
